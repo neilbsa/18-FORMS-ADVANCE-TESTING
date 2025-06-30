@@ -140,20 +140,8 @@ export default function OrderingContextProvider({ children }) {
         headers: { 'Content-Type': 'application/json; charset=utf-8' },
         body: JSON.stringify({
           order: {
-            customer: {
-              name: 'Neil Bryan Abarabar',
-              city: 'Manila',
-              email: 'neilbryan.abarabar@gmail.com',
-              street: '44 sikatuna urduja village brgy 172 caloocan city',
-              'postal-code': '1400',
-            },
-            items: [
-              { id: 'm2', name: 'Margherita Pizza', price: '12.99', qty: 10 },
-              { id: 'm1', name: 'Mac & Cheese', price: '8.99', qty: 10 },
-              { id: 'm3', name: 'Caesar Salad', price: '7.99', qty: 11 },
-              { id: 'm5', name: 'Veggie Burger', price: '9.99', qty: 10 },
-              { id: 'm11', name: 'Seafood Paella', price: '19.99', qty: 10 },
-            ],
+            customer: orderDetails.customer, // ✅ Use actual form data
+            items: cart.orderedItems,
           },
         }),
       });

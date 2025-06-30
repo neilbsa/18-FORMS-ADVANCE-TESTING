@@ -71,7 +71,7 @@ export default function OrderConfirmationInfo() {
     }
   }
   const [OrderFormData, orderFormAction, OrderFormIsPending] = useActionState(
-    handleSubmitActionForm,
+    handleFormSubmit,
     { validationError: [], enteredValues: {} }
   );
   return (
