@@ -45,7 +45,7 @@ function validateData(obj) {
 export default function OrderConfirmationInfo() {
   const orderAction = useOrderAction();
 
-  async function handleFormSubmit(prevForm, currentForm) {
+  async function handleSubmitActionForm(prevForm, currentForm) {
     console.log(currentForm);
     try {
       const enteredValues = extractDataToObject(currentForm);
@@ -71,7 +71,7 @@ export default function OrderConfirmationInfo() {
     }
   }
   const [OrderFormData, orderFormAction, OrderFormIsPending] = useActionState(
-    handleFormSubmit,
+    handleSubmitActionForm,
     { validationError: [], enteredValues: {} }
   );
   return (

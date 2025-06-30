@@ -96,7 +96,6 @@ function cartReducers(state, action) {
 }
 
 export default function OrderingContextProvider({ children }) {
-  alert('this is called');
   const [cart, dispatchCartItem] = useReducer(
     cartReducers,
     {
