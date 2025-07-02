@@ -13,7 +13,7 @@ function App() {
 
     try {
       console.log('accessing server');
-      // ----this is working without any full page reload----
+      //----this is working without any full page reload----
       const orderCreateRequest = await fetch(
         'https://jsonplaceholder.typicode.com/posts',
         {
@@ -30,6 +30,7 @@ function App() {
       );
       //----this is working without any full page reload----
 
+      //----this is NOT working with full page reload----
       // const orderCreateRequest = await fetch('http://localhost:3000/opinions', {
       //   method: 'POST',
       //   body: JSON.stringify({
@@ -67,7 +68,7 @@ function App() {
       //   }),
       //   headers: { 'Content-Type': 'application/json; charset=UTF-8' },
       // });
-      //-----this call is not working and causing full page reload
+      //----this is NOT working with full page reload----
 
       console.log('Response status:', orderCreateRequest.status);
       console.log('Response ok:', orderCreateRequest.ok);
