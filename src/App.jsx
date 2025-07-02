@@ -13,20 +13,23 @@ function App() {
 
     try {
       console.log('accessing server');
-      // const orderCreateRequest = await fetch(
-      //   'https://jsonplaceholder.typicode.com/posts',
-      //   {
-      //     method: 'POST',
-      //     body: JSON.stringify({
-      //       title: 'foo',
-      //       body: 'bar',
-      //       userId: 1,
-      //     }),
-      //     headers: {
-      //       'Content-type': 'application/json; charset=UTF-8',
-      //     },
-      //   }
-      // );
+      // ----this is working without any full page reload----
+      const orderCreateRequest = await fetch(
+        'https://jsonplaceholder.typicode.com/posts',
+        {
+          method: 'POST',
+          body: JSON.stringify({
+            title: 'foo',
+            body: 'bar',
+            userId: 1,
+          }),
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+          },
+        }
+      );
+      //----this is working without any full page reload----
+
       // const orderCreateRequest = await fetch('http://localhost:3000/opinions', {
       //   method: 'POST',
       //   body: JSON.stringify({
@@ -40,28 +43,31 @@ function App() {
       //   }),
       //   headers: { 'Content-Type': 'application/json; charset=UTF-8' },
       // });
-      const orderCreateRequest = await fetch('http://localhost:3000/orders', {
-        method: 'POST',
-        body: JSON.stringify({
-          order: {
-            customer: {
-              name: 'Nppppppppppppppppppppppppppppppppp',
-              city: 'Manila',
-              email: 'neilbryan.abarabar@gmail.com',
-              street: '44 ',
-              postalCode: '1400',
-            },
-            items: [
-              { id: 'm2', name: 'Margherita Pizza', price: '12.99', qty: 10 },
-              { id: 'm1', name: 'Mac & Cheese', price: '8.99', qty: 10 },
-              { id: 'm3', name: 'Caesar Salad', price: '7.99', qty: 11 },
-              { id: 'm5', name: 'Veggie Burger', price: '9.99', qty: 10 },
-              { id: 'm11', name: 'Seafood Paella', price: '19.99', qty: 10 },
-            ],
-          },
-        }),
-        headers: { 'Content-Type': 'application/json; charset=UTF-8' },
-      });
+
+      //-----this call is not working and causing full page reload
+      // const orderCreateRequest = await fetch('http://localhost:3000/orders', {
+      //   method: 'POST',
+      //   body: JSON.stringify({
+      //     order: {
+      //       customer: {
+      //         name: 'Nppppppppppppppppppppppppppppppppp',
+      //         city: 'Manila',
+      //         email: 'neilbryan.abarabar@gmail.com',
+      //         street: '44 ',
+      //         ['postal-code']: '1400',
+      //       },
+      //       items: [
+      //         { id: 'm2', name: 'Margherita Pizza', price: '12.99', qty: 10 },
+      //         { id: 'm1', name: 'Mac & Cheese', price: '8.99', qty: 10 },
+      //         { id: 'm3', name: 'Caesar Salad', price: '7.99', qty: 11 },
+      //         { id: 'm5', name: 'Veggie Burger', price: '9.99', qty: 10 },
+      //         { id: 'm11', name: 'Seafood Paella', price: '19.99', qty: 10 },
+      //       ],
+      //     },
+      //   }),
+      //   headers: { 'Content-Type': 'application/json; charset=UTF-8' },
+      // });
+      //-----this call is not working and causing full page reload
 
       console.log('Response status:', orderCreateRequest.status);
       console.log('Response ok:', orderCreateRequest.ok);
@@ -91,6 +97,7 @@ function App() {
       };
     }
   }
+
   const [OrderFormData, orderFormAction, OrderFormIsPending] = useActionState(
     checkOutAction,
     {}
